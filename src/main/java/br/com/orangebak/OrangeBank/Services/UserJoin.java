@@ -2,6 +2,7 @@ package br.com.orangebak.OrangeBank.Services;
 
 import br.com.orangebak.OrangeBank.Models.Users;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -48,8 +49,7 @@ public class UserJoin {
 
                 Users users = new Users(emailUser,passwordUser);
 
-                Gson gson = new Gson();
-                gson.newBuilder()
+                Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
 
