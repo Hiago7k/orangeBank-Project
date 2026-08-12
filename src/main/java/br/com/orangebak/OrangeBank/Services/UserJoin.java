@@ -6,10 +6,18 @@ import com.google.gson.GsonBuilder;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserJoin {
 
+    private List<Users> listUsers = new ArrayList<>();
+
+    public void saveUserCredentials(Users user)
+    {
+        listUsers.add(user);
+    };
 
     public void Login() throws IOException {
         System.out.println("********************************");
