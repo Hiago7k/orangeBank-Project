@@ -4,10 +4,7 @@ import br.com.orangebak.OrangeBank.Models.Users;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,15 +39,29 @@ public class UserJoin {
                 String password = keyboard.next();
 
                 // Verificar se as credencias batem com as que estão no jsonl
-                FileReader validatorCredentials = new FileReader("users.jsonl");
+                try {
+                    FileReader reader = new FileReader("users.jsonl");
+                    // Create memory buffer reader
+                    BufferedReader buffer = new BufferedReader(reader);
+                    String line;
+                    while(true){
+                        line = buffer.readLine();
+                        System.out.println(line);
+                        if (line == null){
+                            break;
+                        }
+                    }
+                    //reader.close();
+                }catch (Exception e){
+                    System.out.println("Error" + e);
+                }
+//
+//                if(!){
+//                    System.out.println("Access denied");
+//                    System.out.println("Credentials invalid");
+//                    break;
+//                };
 
-                if(!validatorCredentials.equals(listUsers)){
-                    System.out.println("Access denied");
-                    System.out.println("Credentials invalid");\
-                    break;
-                };
-
-                validatorCredentials.close();
                 System.out.println("Login realized with success");
 
                 break;
