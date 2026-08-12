@@ -4,6 +4,7 @@ import br.com.orangebak.OrangeBank.Models.Users;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,16 +60,19 @@ public class UserJoin {
 
                 // validar se ja tenho um arquivo users.json criado
 
-
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
 
 
+                String nameOfFile = "users.json";
                 saveUserCredentials(users);
-                FileWriter bdUsers = new FileWriter("users.json");
-                bdUsers.write(gson.toJson(listUsers));
-                bdUsers.close();
+
+                    FileWriter bdUsers = new FileWriter(nameOfFile, true);
+                    bdUsers.write(gson.toJson(listUsers));
+                    bdUsers.close();
+
+
                 // System Serealize login
                 // Chegamos em um bloqueio toda vez que criamos uma conta
                 // ele cria um arquivo json, porem se rodar de novo
@@ -76,7 +80,6 @@ public class UserJoin {
                 // um usuario abaixo
                 // provavelmente vamos utilizar uma condicao para exists
                 // se extiri ele apenas adiciona na lista
-
 
                 break;
             default:
