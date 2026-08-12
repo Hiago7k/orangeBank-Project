@@ -1,5 +1,6 @@
 package br.com.orangebak.OrangeBank.Services;
 
+import br.com.orangebak.OrangeBank.Models.Users;
 import com.google.gson.Gson;
 
 import java.io.FileWriter;
@@ -45,14 +46,16 @@ public class UserJoin {
                     break;
                 }
 
+                Users users = new Users(emailUser,passwordUser);
+
                 Gson gson = new Gson();
                 gson.newBuilder()
                         .setPrettyPrinting()
                         .create();
 
-                FileWriter users = new FileWriter("users.json");
-                users.write(gson.toJson(Users));
-                users.close();
+                FileWriter bdUsers = new FileWriter("users.json");
+                bdUsers.write(gson.toJson(users));
+                bdUsers.close();
 
                 // System Serealize login
 
