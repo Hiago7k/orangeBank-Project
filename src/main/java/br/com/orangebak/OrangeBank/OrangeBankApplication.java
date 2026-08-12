@@ -23,7 +23,20 @@ public class OrangeBankApplication implements CommandLineRunner {
 		System.out.println("Type your option: ");
 		System.out.println("1. Login");
 		System.out.println("2. Create a new Account");
+		int answerUser = keyboard.nextInt();
 
+		switch (answerUser)
+		{
+			case 1:
+				System.out.println("Type your Credentials");
+				break;
+			case 2:
+				System.out.println("Create new account");
+				break;
+			default:
+				System.out.println("Invalid Options, type another valid number");
+				break;
+		}
 
 
 	}
