@@ -18,7 +18,5 @@ public class OrangeBankApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		UserJoin userjoin = new UserJoin();
 		userjoin.Login();
-
-
 	}
 }

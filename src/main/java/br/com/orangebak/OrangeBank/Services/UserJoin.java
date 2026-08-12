@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +36,23 @@ public class UserJoin {
         {
             case 1:
                 System.out.println("Type your Credentials");
+                System.out.println("Your Email: ");
+                String email = keyboard.next();
+                System.out.println("Your Password");
+                String password = keyboard.next();
+
+                // Verificar se as credencias batem com as que estão no jsonl
+                FileReader validatorCredentials = new FileReader("users.jsonl");
+
+                if(!validatorCredentials.equals(listUsers)){
+                    System.out.println("Access denied");
+                    System.out.println("Credentials invalid");\
+                    break;
+                };
+
+                validatorCredentials.close();
+                System.out.println("Login realized with success");
+
                 break;
             case 2:
                 System.out.println("Fill in the fields below.");
@@ -57,9 +75,6 @@ public class UserJoin {
                 }
 
                 Users users = new Users(emailUser,passwordUser);
-
-                // validar se ja tenho um arquivo users.json criado
-
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
@@ -71,21 +86,10 @@ public class UserJoin {
                     FileWriter bdUsers = new FileWriter(nameOfFile, true);
                     bdUsers.write(gson.toJson(listUsers));
                     bdUsers.close();
-
-
-                // System Serealize login
-                // Chegamos em um bloqueio toda vez que criamos uma conta
-                // ele cria um arquivo json, porem se rodar de novo
-                // ele vai sobrescrever o json antigo inves de apenas adicionar
-                // um usuario abaixo
-                // provavelmente vamos utilizar uma condicao para exists
-                // se extiri ele apenas adiciona na lista
-
                 break;
             default:
                 System.out.println("Invalid Options, type another valid number");
                 break;
         }
     };
-
 }
