@@ -65,7 +65,7 @@ public class UserJoin {
                         .create();
 
 
-                String nameOfFile = "users.json";
+                String nameOfFile = "users.jsonl";
                 saveUserCredentials(users);
 
                     FileWriter bdUsers = new FileWriter(nameOfFile, true);
