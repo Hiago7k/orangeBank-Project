@@ -57,15 +57,26 @@ public class UserJoin {
 
                 Users users = new Users(emailUser,passwordUser);
 
+                // validar se ja tenho um arquivo users.json criado
+
+
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
 
-                FileWriter bdUsers = new FileWriter("users.json");
-                bdUsers.write(gson.toJson(users));
-                bdUsers.close();
 
+                saveUserCredentials(users);
+                FileWriter bdUsers = new FileWriter("users.json");
+                bdUsers.write(gson.toJson(listUsers));
+                bdUsers.close();
                 // System Serealize login
+                // Chegamos em um bloqueio toda vez que criamos uma conta
+                // ele cria um arquivo json, porem se rodar de novo
+                // ele vai sobrescrever o json antigo inves de apenas adicionar
+                // um usuario abaixo
+                // provavelmente vamos utilizar uma condicao para exists
+                // se extiri ele apenas adiciona na lista
+
 
                 break;
             default:
