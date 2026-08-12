@@ -31,7 +31,15 @@ public class OrangeBankApplication implements CommandLineRunner {
 				System.out.println("Type your Credentials");
 				break;
 			case 2:
-				System.out.println("Create new account");
+				System.out.println("Fill in the fields below.");
+				System.out.println("email: ");
+				String emailUser = keyboard.next();
+				System.out.println("confirm email");
+				String emailUserConfirm = keyboard.next();
+				System.out.println("password");
+				String passwordUser = keyboard.next();
+				
+
 				break;
 			default:
 				System.out.println("Invalid Options, type another valid number");
