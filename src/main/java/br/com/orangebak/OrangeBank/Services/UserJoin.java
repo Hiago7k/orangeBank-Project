@@ -1,11 +1,15 @@
 package br.com.orangebak.OrangeBank.Services;
 
+import com.google.gson.Gson;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserJoin {
 
 
-    public void Login(){
+    public void Login() throws IOException {
         System.out.println("********************************");
         System.out.println("---- Welcome to Orange Bank ----");
         System.out.println("********************************");
@@ -41,6 +45,14 @@ public class UserJoin {
                     break;
                 }
 
+                Gson gson = new Gson();
+                gson.newBuilder()
+                        .setPrettyPrinting()
+                        .create();
+
+                FileWriter users = new FileWriter("users.json");
+                users.write(gson.toJson(Users));
+                users.close();
 
                 // System Serealize login
 
