@@ -25,6 +25,7 @@ public class UserJoin {
         System.out.println("********************************");
         Scanner keyboard = new Scanner(System.in);
 
+
         System.out.println("Type your option: ");
         System.out.println("1. Login");
         System.out.println("2. Create a new Account");
@@ -35,19 +36,13 @@ public class UserJoin {
             case 1:
                 System.out.println("Type your Credentials");
                 System.out.println("Your Email: ");
-                String email = keyboard.next();
+                String emailUser2 = keyboard.next();
                 System.out.println("Your Password");
-                String password = keyboard.next();
+                String passwordUser2 = keyboard.next();
 
                 // Verificar se as credencias batem com as que estão no jsonl
 
-                System.out.println("*@$)(_@(*)_$@*(_)$*(_)@_$*)(@");
 
-                for(var test : listUsers){
-                    System.out.println("*********");
-                    System.out.println("Percorrendo a lista usuarios cadastro no sistema");
-                    System.out.println(test.toString());
-                }
 
                 try {
                     FileReader reader = new FileReader("users.jsonl");
@@ -55,7 +50,7 @@ public class UserJoin {
 
                     while(true){
                       String  line = buffer.readLine();
-                        Users usersRegistreds = new Users(email, password);
+                        Users usersRegistreds = new Users(emailUser, passwordUser);
 
                         if (!usersRegistreds.email().equals(line) && usersRegistreds.password().equals(line))
                         {
@@ -83,7 +78,7 @@ public class UserJoin {
                 System.out.println("confirm email");
                 String emailUserConfirm = keyboard.next();
                 System.out.println("password");
-                String passwordUser = keyboard.next();
+               String passwordUser = keyboard.next();
 
                 if(!emailUser.equals(emailUserConfirm))
                 {
@@ -96,18 +91,18 @@ public class UserJoin {
                     break;
                 }
 
-                Users users = new Users(emailUser,passwordUser);
+                Users users = new Users(emailUser, passwordUser);
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
 
-
                 String nameOfFile = "users.jsonl";
-                saveUserCredentials(users);
 
                     FileWriter bdUsers = new FileWriter(nameOfFile, true);
                     bdUsers.write(gson.toJson(listUsers));
                     bdUsers.close();
+                saveUserCredentials(users);
+
                 break;
             default:
                 System.out.println("Invalid Options, type another valid number");
