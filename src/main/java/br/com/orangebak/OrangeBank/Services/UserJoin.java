@@ -4,6 +4,7 @@ import br.com.orangebak.OrangeBank.Models.Users;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.sound.midi.Soundbank;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,40 +40,41 @@ public class UserJoin {
                 String password = keyboard.next();
 
                 // Verificar se as credencias batem com as que estão no jsonl
+
+                System.out.println("*@$)(_@(*)_$@*(_)$*(_)@_$*)(@");
+
+                for(var test : listUsers){
+                    System.out.println("*********");
+                    System.out.println("Percorrendo a lista usuarios cadastro no sistema");
+                    System.out.println(test.toString());
+                }
+
                 try {
                     FileReader reader = new FileReader("users.jsonl");
-                    // Create memory buffer reader
                     BufferedReader buffer = new BufferedReader(reader);
-                    String line;
+
                     while(true){
-                        line = buffer.readLine();
-                        System.out.println(line);
+                      String  line = buffer.readLine();
+                        Users usersRegistreds = new Users(email, password);
+
+                        if (!usersRegistreds.email().equals(line) && usersRegistreds.password().equals(line))
+                        {
+                            System.out.println("Caiu na validação de que a senha e login não existem no banco de json");
+                            System.out.println("Access denied, credentials not found");
+                            break;
+                        }
+                        System.out.println(usersRegistreds.toString());
                         if (line == null){
                             break;
                         }
+                        System.out.println("caiu no try");
                     }
-
-                    System.out.println("************");
-                    System.out.println("Testando oque cai aqui");
-                    Users usersRegistreds = new Users(email, password);
-                    System.out.println(usersRegistreds.toString());
-
-                    System.out.println("************");
-
-
-                    //reader.close();
                 }catch (Exception e){
                     System.out.println("Error" + e);
+                    System.out.println("caiu no catch");
                 }
-//
-//                if(!){
-//                    System.out.println("Access denied");
-//                    System.out.println("Credentials invalid");
-//                    break;
-//                };
 
-                System.out.println("Login realized with success");
-
+                System.out.println("Caiu fora do try e catch");
                 break;
             case 2:
                 System.out.println("Fill in the fields below.");
