@@ -51,6 +51,15 @@ public class UserJoin {
                             break;
                         }
                     }
+
+                    System.out.println("************");
+                    System.out.println("Testando oque cai aqui");
+                    Users usersRegistreds = new Users(email, password);
+                    System.out.println(usersRegistreds.toString());
+
+                    System.out.println("************");
+
+
                     //reader.close();
                 }catch (Exception e){
                     System.out.println("Error" + e);
