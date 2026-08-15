@@ -43,14 +43,13 @@ public class UserJoin {
                 // Verificar se as credencias batem com as que estão no jsonl
 
 
-
                 try {
                     FileReader reader = new FileReader("users.jsonl");
                     BufferedReader buffer = new BufferedReader(reader);
 
                     while(true){
                       String  line = buffer.readLine();
-                        Users usersRegistreds = new Users(emailUser, passwordUser);
+                        Users usersRegistreds = new Users(emailUser2, passwordUser2);
 
                         if (!usersRegistreds.email().equals(line) && usersRegistreds.password().equals(line))
                         {
@@ -99,9 +98,9 @@ public class UserJoin {
                 String nameOfFile = "users.jsonl";
 
                     FileWriter bdUsers = new FileWriter(nameOfFile, true);
-                    bdUsers.write(gson.toJson(listUsers));
-                    bdUsers.close();
                 saveUserCredentials(users);
+                bdUsers.write(gson.toJson(users));// Save the object with informations
+                    bdUsers.close();
 
                 break;
             default:
