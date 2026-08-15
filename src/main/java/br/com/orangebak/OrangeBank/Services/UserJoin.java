@@ -14,9 +14,9 @@ public class UserJoin {
 
     private List<Users> listUsers = new ArrayList<>();
 
-    public void saveUserCredentials(Users user)
+    public void saveUserCredentials(Users users)
     {
-        listUsers.add(user);
+        listUsers.add(users);
     };
 
     public void Login() throws IOException {
@@ -98,9 +98,18 @@ public class UserJoin {
                 String nameOfFile = "users.jsonl";
 
                     FileWriter bdUsers = new FileWriter(nameOfFile, true);
-                saveUserCredentials(users);
                 bdUsers.write(gson.toJson(users));// Save the object with informations
-                    bdUsers.close();
+                System.out.println("salvando informações no nosso banco de dados");
+                saveUserCredentials(users);
+                bdUsers.close();
+
+                System.out.println("**********************************************************");
+                System.out.println("validação para ver oque, e se está salvando na lista de usuarios");
+                for (var data : listUsers){
+                    System.out.println("Teste 1");
+                    System.out.println(data);
+                }
+                System.out.println("**********************************************************");
 
                 break;
             default:
