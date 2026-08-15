@@ -24,7 +24,8 @@ public class UserJoin {
         System.out.println("---- Welcome to Orange Bank ----");
         System.out.println("********************************");
         Scanner keyboard = new Scanner(System.in);
-
+        String userEmail = "";
+        String userPassword = "";
 
         System.out.println("Type your option: ");
         System.out.println("1. Login");
@@ -36,11 +37,23 @@ public class UserJoin {
             case 1:
                 System.out.println("Type your Credentials");
                 System.out.println("Your Email: ");
-                String emailUser2 = keyboard.next();
+                 userEmail = keyboard.next();
                 System.out.println("Your Password");
-                String passwordUser2 = keyboard.next();
+                 userPassword = keyboard.next();
 
                 // Verificar se as credencias batem com as que estão no jsonl
+                // fazer uma lista para
+
+                // temos 3 usuarios cadastrado na nossa base
+                // se percorremos a lista e pra exibir os 3
+
+                // estamos tendo um problema,
+                for (var informations : listUsers){
+                    System.out.println("*******************************************************");
+                    System.out.println("Showing all users credntials has been registreds");
+                    System.out.println(informations);
+                    System.out.println("*******************************************************");
+                }
 
 
                 try {
@@ -49,7 +62,7 @@ public class UserJoin {
 
                     while(true){
                       String  line = buffer.readLine();
-                        Users usersRegistreds = new Users(emailUser2, passwordUser2);
+                        Users usersRegistreds = new Users(userEmail, userPassword);
 
                         if (!usersRegistreds.email().equals(line) && usersRegistreds.password().equals(line))
                         {
@@ -73,31 +86,31 @@ public class UserJoin {
             case 2:
                 System.out.println("Fill in the fields below.");
                 System.out.println("email: ");
-                String emailUser = keyboard.next();
+                 userEmail = keyboard.next();
                 System.out.println("confirm email");
                 String emailUserConfirm = keyboard.next();
                 System.out.println("password");
-               String passwordUser = keyboard.next();
+                userPassword = keyboard.next();
 
-                if(!emailUser.equals(emailUserConfirm))
+                if(!userEmail.equals(emailUserConfirm))
                 {
                     System.out.println("Your email is invalid");
                     break;
                 }
 
-                if(passwordUser.length() <= 3){
+                if(userPassword.length() <= 3){
                     System.out.println("Your password is weak, min character is 4");
                     break;
                 }
 
-                Users users = new Users(emailUser, passwordUser);
+                Users users = new Users(userEmail, userPassword);
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
 
                 String nameOfFile = "users.jsonl";
 
-                    FileWriter bdUsers = new FileWriter(nameOfFile, true);
+                FileWriter bdUsers = new FileWriter(nameOfFile, true);
                 bdUsers.write(gson.toJson(users));// Save the object with informations
                 System.out.println("salvando informações no nosso banco de dados");
                 saveUserCredentials(users);
@@ -105,7 +118,7 @@ public class UserJoin {
 
                 System.out.println("**********************************************************");
                 System.out.println("validação para ver oque, e se está salvando na lista de usuarios");
-                for (var data : listUsers){
+                for (var data : listUsers){ // Exibe usuario que acabou de cadastrado
                     System.out.println("Teste 1");
                     System.out.println(data);
                 }
