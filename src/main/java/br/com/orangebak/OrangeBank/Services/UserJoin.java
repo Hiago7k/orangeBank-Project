@@ -24,8 +24,8 @@ public class UserJoin {
         System.out.println("---- Welcome to Orange Bank ----");
         System.out.println("********************************");
         Scanner keyboard = new Scanner(System.in);
-        String userEmail = "";
-        String userPassword = "";
+        String userEmail;
+        String  userPassword;
         Users myUsers = new Users(userEmail,userPassword);
 
         System.out.println("Type your option: ");
@@ -35,6 +35,7 @@ public class UserJoin {
 
         switch (answerUser)
         {
+
             case 1:
                 System.out.println("Type your Credentials");
                 System.out.println("Your Email: ");
