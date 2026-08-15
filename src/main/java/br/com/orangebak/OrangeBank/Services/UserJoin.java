@@ -26,6 +26,7 @@ public class UserJoin {
         Scanner keyboard = new Scanner(System.in);
         String userEmail = "";
         String userPassword = "";
+        Users myUsers = new Users(userEmail,userPassword);
 
         System.out.println("Type your option: ");
         System.out.println("1. Login");
@@ -62,15 +63,16 @@ public class UserJoin {
 
                     while(true){
                       String  line = buffer.readLine();
-                        Users usersRegistreds = new Users(userEmail, userPassword);
+                      // isso aqui cria um novo objeto, mais queremos usar os existentes
+                       // Users usersRegistreds = new Users(userEmail, userPassword);
 
-                        if (!usersRegistreds.email().equals(line) && usersRegistreds.password().equals(line))
+                        if (!myUsers.email().equals(line) && myUsers.password().equals(line))
                         {
                             System.out.println("Caiu na validação de que a senha e login não existem no banco de json");
                             System.out.println("Access denied, credentials not found");
                             break;
                         }
-                        System.out.println(usersRegistreds.toString());
+                        System.out.println(myUsers.toString());
                         if (line == null){
                             break;
                         }
@@ -103,7 +105,7 @@ public class UserJoin {
                     break;
                 }
 
-                Users users = new Users(userEmail, userPassword);
+               // Users users = new Users(userEmail, userPassword);
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
@@ -111,9 +113,9 @@ public class UserJoin {
                 String nameOfFile = "users.jsonl";
 
                 FileWriter bdUsers = new FileWriter(nameOfFile, true);
-                bdUsers.write(gson.toJson(users));// Save the object with informations
+                bdUsers.write(gson.toJson(myUsers));// Save the object with informations
                 System.out.println("salvando informações no nosso banco de dados");
-                saveUserCredentials(users);
+                saveUserCredentials(myUsers);
                 bdUsers.close();
 
                 System.out.println("**********************************************************");
