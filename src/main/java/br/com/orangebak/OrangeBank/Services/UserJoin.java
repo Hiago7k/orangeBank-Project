@@ -11,6 +11,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserJoin {
+    public String getPsswd() {
+        return psswd;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    // Testing
 private String email;
 private String psswd;
 
@@ -51,10 +60,11 @@ private String psswd;
                 // se percorremos a lista e pra exibir os 3
 
                 // estamos tendo um problema,
-                for (var informations : listUsers){
+                for (var info : listUsers){
                     System.out.println("*******************************************************");
                     System.out.println("Showing all users credntials has been registreds");
-                    System.out.println(informations);
+                    System.out.println(info.email());
+                    System.out.println(info.password());
                     System.out.println("*******************************************************");
                 }
 
