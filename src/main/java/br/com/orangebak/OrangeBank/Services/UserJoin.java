@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserJoin {
+private String email;
+private String psswd;
+
 
     private List<Users> listUsers = new ArrayList<>();
 
@@ -24,9 +27,7 @@ public class UserJoin {
         System.out.println("---- Welcome to Orange Bank ----");
         System.out.println("********************************");
         Scanner keyboard = new Scanner(System.in);
-        String userEmail;
-        String  userPassword;
-        Users myUsers = new Users(userEmail,userPassword);
+        Users myUsers = new Users(email,psswd);
 
         System.out.println("Type your option: ");
         System.out.println("1. Login");
@@ -39,9 +40,9 @@ public class UserJoin {
             case 1:
                 System.out.println("Type your Credentials");
                 System.out.println("Your Email: ");
-                 userEmail = keyboard.next();
+                email = keyboard.next();
                 System.out.println("Your Password");
-                 userPassword = keyboard.next();
+                psswd = keyboard.next();
 
                 // Verificar se as credencias batem com as que estão no jsonl
                 // fazer uma lista para
@@ -89,19 +90,19 @@ public class UserJoin {
             case 2:
                 System.out.println("Fill in the fields below.");
                 System.out.println("email: ");
-                 userEmail = keyboard.next();
+                email = keyboard.next();
                 System.out.println("confirm email");
                 String emailUserConfirm = keyboard.next();
                 System.out.println("password");
-                userPassword = keyboard.next();
+                psswd = keyboard.next();
 
-                if(!userEmail.equals(emailUserConfirm))
+                if(!email.equals(emailUserConfirm))
                 {
                     System.out.println("Your email is invalid");
                     break;
                 }
 
-                if(userPassword.length() <= 3){
+                if(psswd.length() <= 3){
                     System.out.println("Your password is weak, min character is 4");
                     break;
                 }
