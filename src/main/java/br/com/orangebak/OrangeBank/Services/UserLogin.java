@@ -35,69 +35,71 @@ public class UserLogin   {
         System.out.println("2. Create a new Account");
         int answerUser = keyboard.nextInt();
 
-        Users myUsers = new Users(email, psswd);
 
 
         switch (answerUser)
         {
-            case 1:
-                System.out.println("Type your Credentials");
-                System.out.println("Your Email: ");
-                email = keyboard.next();
-                System.out.println("Your Password");
-                psswd = keyboard.next();
+           // Users myUsers = new Users(email, psswd);
 
-
-                // estamos tendo um problema,
-                for (var info : listUsers){
-                    System.out.println("*******************************************************");
-                    System.out.println("Showing all users credntials has been registreds");
-                    System.out.println(info.email());
-                    System.out.println(info.password());
-                    System.out.println("*******************************************************");
-                }
-
-
-                try {
-                    FileReader reader = new FileReader("users.jsonl");
-                    BufferedReader buffer = new BufferedReader(reader);
-
-                    while(true){
-                        String  line = buffer.readLine();
-
-                        if (!myUsers.email().equals(line) && myUsers.password().equals(line))
-                        {
-                            System.out.println("Caiu na validação de que a senha e login não existem no banco de json");
-                            System.out.println("Access denied, credentials not found");
-                            break;
-                        }
-                        System.out.println(myUsers.toString());
-                        if (line == null){
-                            break;
-                        }
-                        System.out.println("caiu no try");
-                    }
-                }catch (Exception e){
-                    System.out.println("Error" + e);
-                    System.out.println("caiu no catch");
-                }
-
-                System.out.println("Caiu fora do try e catch");
+        case 1:
+//                System.out.println("Type your Credentials");
+//                System.out.println("Your Email: ");
+//                email = keyboard.next();
+//                System.out.println("Your Password");
+//                psswd = keyboard.next();
+//
+//                for (var info : listUsers){
+//                    System.out.println("*******************************************************");
+//                    System.out.println("Showing all users credntials has been registreds");
+//                    System.out.println(info.email());
+//                    System.out.println(info.password());
+//                    System.out.println("*******************************************************");
+//                }
+//
+//
+//                try {
+//                    FileReader reader = new FileReader("users.jsonl");
+//                    BufferedReader buffer = new BufferedReader(reader);
+//
+//                    while(true){
+//                        String  line = buffer.readLine();
+//
+//                        if (!myUsers.email().equals(line) && myUsers.password().equals(line))
+//                        {
+//                            System.out.println("Caiu na validação de que a senha e login não existem no banco de json");
+//                            System.out.println("Access denied, credentials not found");
+//                            break;
+//                        }
+//                        System.out.println(myUsers.toString());
+//                        if (line == null){
+//                            break;
+//                        }
+//                        System.out.println("caiu no try");
+//                    }
+//                }catch (Exception e){
+//                    System.out.println("Error" + e);
+//                    System.out.println("caiu no catch");
+//                }
+//
+//                System.out.println("Caiu fora do try e catch");
                 break;
+
             case 2:
+
                 System.out.println("Fill in the fields below.");
                 System.out.println("email: ");
                 email = keyboard.next();
-                System.out.println("confirm email");
-                String emailUserConfirm = keyboard.next();
-                System.out.println("password");
+               // System.out.println("confirm email");
+            //    String emailUserConfirm = keyboard.nextLine();
+                System.out.println("password: ");
                 psswd = keyboard.next();
 
-                if(!email.equals(emailUserConfirm))
-                {
-                    System.out.println("Your email is invalid");
-                    break;
-                }
+                Users myUsers = new Users(email, psswd);
+//                if(!email.equals(emailUserConfirm))
+//                {
+//                    System.out.println("Your email is invalid");
+//                    break;
+//                }
 
                 if(psswd.length() <= 3){
                     System.out.println("Your password is weak, min character is 4");
@@ -107,11 +109,10 @@ public class UserLogin   {
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
-
                 String nameOfFile = "users.jsonl";
 
                 FileWriter bdUsers = new FileWriter(nameOfFile, true);
-                bdUsers.write(gson.toJson(listUsers));
+                bdUsers.write(gson.toJson(myUsers));
                 System.out.println("salvando informações no nosso banco de dados");
                 saveUserCredentials(myUsers);
                 bdUsers.close();
@@ -120,7 +121,8 @@ public class UserLogin   {
                 System.out.println("validação para ver oque, e se está salvando na lista de usuarios");
                 for (var data : listUsers){
                     System.out.println("Teste 1");
-                    System.out.println(data);
+                    System.out.println(data.email());
+                    System.out.println(data.password());
                 }
                 System.out.println("**********************************************************");
 
