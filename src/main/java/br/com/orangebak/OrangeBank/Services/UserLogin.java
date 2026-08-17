@@ -89,17 +89,9 @@ public class UserLogin   {
                 System.out.println("Fill in the fields below.");
                 System.out.println("email: ");
                 email = keyboard.next();
-               // System.out.println("confirm email");
-            //    String emailUserConfirm = keyboard.nextLine();
                 System.out.println("password: ");
                 psswd = keyboard.next();
-
                 Users myUsers = new Users(email, psswd);
-//                if(!email.equals(emailUserConfirm))
-//                {
-//                    System.out.println("Your email is invalid");
-//                    break;
-//                }
 
                 if(psswd.length() <= 3){
                     System.out.println("Your password is weak, min character is 4");
@@ -116,15 +108,6 @@ public class UserLogin   {
                 System.out.println("salvando informações no nosso banco de dados");
                 saveUserCredentials(myUsers);
                 bdUsers.close();
-
-                System.out.println("**********************************************************");
-                System.out.println("validação para ver oque, e se está salvando na lista de usuarios");
-                for (var data : listUsers){
-                    System.out.println("Teste 1");
-                    System.out.println(data.email());
-                    System.out.println(data.password());
-                }
-                System.out.println("**********************************************************");
 
                 break;
             default:
