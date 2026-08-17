@@ -12,13 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserLogin {
+public class UserLogin   {
 
-    // Testing
     private String email;
     private String psswd;
     private Scanner keyboard = new Scanner(System.in);
-
 
     private List<Users> listUsers = new ArrayList<>();
 
@@ -31,27 +29,24 @@ public class UserLogin {
         System.out.println("********************************");
         System.out.println("---- Welcome to Orange Bank ----");
         System.out.println("********************************");
-        Users myUsers = new Users(email,psswd);
 
         System.out.println("Type your option: ");
         System.out.println("1. Login");
         System.out.println("2. Create a new Account");
         int answerUser = keyboard.nextInt();
 
+        Users myUsers = new Users(email, psswd);
+
+
         switch (answerUser)
         {
             case 1:
                 System.out.println("Type your Credentials");
                 System.out.println("Your Email: ");
-                myUsers.email = keyboard.next();
+                email = keyboard.next();
                 System.out.println("Your Password");
                 psswd = keyboard.next();
 
-                // Verificar se as credencias batem com as que estão no jsonl
-                // fazer uma lista para
-
-                // temos 3 usuarios cadastrado na nossa base
-                // se percorremos a lista e pra exibir os 3
 
                 // estamos tendo um problema,
                 for (var info : listUsers){
@@ -69,8 +64,6 @@ public class UserLogin {
 
                     while(true){
                         String  line = buffer.readLine();
-                        // isso aqui cria um novo objeto, mais queremos usar os existentes
-                        // Users usersRegistreds = new Users(userEmail, userPassword);
 
                         if (!myUsers.email().equals(line) && myUsers.password().equals(line))
                         {
@@ -111,7 +104,6 @@ public class UserLogin {
                     break;
                 }
 
-                // Users users = new Users(userEmail, userPassword);
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
@@ -119,14 +111,14 @@ public class UserLogin {
                 String nameOfFile = "users.jsonl";
 
                 FileWriter bdUsers = new FileWriter(nameOfFile, true);
-                bdUsers.write(gson.toJson(myUsers));// Save the object with informations
+                bdUsers.write(gson.toJson(listUsers));
                 System.out.println("salvando informações no nosso banco de dados");
                 saveUserCredentials(myUsers);
                 bdUsers.close();
 
                 System.out.println("**********************************************************");
                 System.out.println("validação para ver oque, e se está salvando na lista de usuarios");
-                for (var data : listUsers){ // Exibe usuario que acabou de cadastrado
+                for (var data : listUsers){
                     System.out.println("Teste 1");
                     System.out.println(data);
                 }
