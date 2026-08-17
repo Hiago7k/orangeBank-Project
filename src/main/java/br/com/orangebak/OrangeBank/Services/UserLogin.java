@@ -4,24 +4,20 @@ import br.com.orangebak.OrangeBank.Models.Users;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import javax.sound.midi.Soundbank;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserJoin {
-    public String getPsswd() {
-        return psswd;
-    }
-
-    public String getEmail() {
-        return email;
-    }
+public class UserLogin {
 
     // Testing
-private String email;
-private String psswd;
+    private String email;
+    private String psswd;
+    private Scanner keyboard = new Scanner(System.in);
 
 
     private List<Users> listUsers = new ArrayList<>();
@@ -35,7 +31,6 @@ private String psswd;
         System.out.println("********************************");
         System.out.println("---- Welcome to Orange Bank ----");
         System.out.println("********************************");
-        Scanner keyboard = new Scanner(System.in);
         Users myUsers = new Users(email,psswd);
 
         System.out.println("Type your option: ");
@@ -45,11 +40,10 @@ private String psswd;
 
         switch (answerUser)
         {
-
             case 1:
                 System.out.println("Type your Credentials");
                 System.out.println("Your Email: ");
-                email = keyboard.next();
+                myUsers.email = keyboard.next();
                 System.out.println("Your Password");
                 psswd = keyboard.next();
 
@@ -74,9 +68,9 @@ private String psswd;
                     BufferedReader buffer = new BufferedReader(reader);
 
                     while(true){
-                      String  line = buffer.readLine();
-                      // isso aqui cria um novo objeto, mais queremos usar os existentes
-                       // Users usersRegistreds = new Users(userEmail, userPassword);
+                        String  line = buffer.readLine();
+                        // isso aqui cria um novo objeto, mais queremos usar os existentes
+                        // Users usersRegistreds = new Users(userEmail, userPassword);
 
                         if (!myUsers.email().equals(line) && myUsers.password().equals(line))
                         {
@@ -117,7 +111,7 @@ private String psswd;
                     break;
                 }
 
-               // Users users = new Users(userEmail, userPassword);
+                // Users users = new Users(userEmail, userPassword);
                 Gson gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
@@ -142,6 +136,7 @@ private String psswd;
             default:
                 System.out.println("Invalid Options, type another valid number");
                 break;
-        }
+        };
     };
-}
+};
+
