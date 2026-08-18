@@ -53,15 +53,13 @@ public class UserLogin {
                         if (line == null) {
                             break;
                         }
-                        //usersHistory.add(line); esta salvando a primeira linha apenas
-                        if(line.contains(psswd) ) {
-                            System.out.println("CAIU no CERTO");
+
+                        if(line.contains(email) || line.contains(psswd)) { // Apenas valida a senha
                             System.out.println("*****************");
                             Users newUsers = new Users(email, psswd);
                             listUsers.add(newUsers);
                             System.out.println(newUsers.toString());
                         }
-                        System.out.println(line); // como eu vou salvando cada linha?
                     }
 
                     for (var check : usersHistory) {
