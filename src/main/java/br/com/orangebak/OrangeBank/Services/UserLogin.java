@@ -54,8 +54,9 @@ public class UserLogin {
                             break;
                         }
                         //usersHistory.add(line); esta salvando a primeira linha apenas
-                        if(email.equals(line) && psswd.equals(line)) {
-                            System.out.println("testew @#@#@#@#@#@#@#@");
+                        if(line.contains(psswd) ) {
+                            System.out.println("CAIU no CERTO");
+                            System.out.println("*****************");
                             Users newUsers = new Users(email, psswd);
                             listUsers.add(newUsers);
                             System.out.println(newUsers.toString());
