@@ -54,16 +54,16 @@ public class UserLogin {
                             break;
                         }
                         usersHistory.add(line);
-
-                        System.out.println("*****************************************");
-                        System.out.println("Percorrendo a lista de historia de usuarios");
-                        for(var check : usersHistory){
-                            System.out.println("teste");
-                            System.out.println(check);
-                        }
-                        System.out.println("*****************************************");
                     }
-
+                    for (var check : usersHistory) {
+                        if(email.equals(check) && psswd.equals(check))
+                        {
+                            System.out.println("Access Allowed");
+                        }else {
+                            System.out.println("Access Denied");
+                            break;
+                        }
+                    }
                 } catch (Exception e) {
                     System.out.println("Error" + e);
                     System.out.println("caiu no catch");
