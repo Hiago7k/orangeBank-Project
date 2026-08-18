@@ -55,6 +55,7 @@ public class UserLogin {
                         }
                         usersHistory.add(line);
                     }
+
                     for (var check : usersHistory) {
                         System.out.println("A lista que ta chegando" + check);
                         System.out.println("O email que ta chegando" + email);
