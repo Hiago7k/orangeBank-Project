@@ -19,7 +19,7 @@ public class UserLogin {
     private Scanner keyboard = new Scanner(System.in);
 
     private List<Users> listUsers = new ArrayList<>();
-
+    private List<String> usersHistory = new ArrayList<>();
     public void saveUserCredentials(Users users) {
         listUsers.add(users);
     };
@@ -40,27 +40,30 @@ public class UserLogin {
                 System.out.println("Your Password");
                 psswd = keyboard.next();
 
-
-
                 try {
+                    for(var check : listUsers){
+                        System.out.println("Exibindo usuarios ja cadastrados");
+                        System.out.println(check);
+                    };
+
                     FileReader reader = new FileReader("users.jsonl");
                     BufferedReader buffer = new BufferedReader(reader);
-
                     while (true) {
                         String line = buffer.readLine();
-
-//                        if (!myUsers.email().equals(line) && myUsers.password().equals(line)) {
-//                            System.out.println("Caiu na validação de que a senha e login não existem no banco de json");
-//                            System.out.println("Access denied, credentials not found");
-//                            break;
-//                        }
-//                        System.out.println(myUsers.toString());
                         if (line == null) {
                             break;
                         }
-                        System.out.println(line);
-                        System.out.println("caiu no try");
+                        usersHistory.add(line);
+
+                        System.out.println("*****************************************");
+                        System.out.println("Percorrendo a lista de historia de usuarios");
+                        for(var check : usersHistory){
+                            System.out.println("teste");
+                            System.out.println(check);
+                        }
+                        System.out.println("*****************************************");
                     }
+
                 } catch (Exception e) {
                     System.out.println("Error" + e);
                     System.out.println("caiu no catch");
@@ -99,10 +102,7 @@ public class UserLogin {
             default:
                 System.out.println("Invalid Options, type another valid number");
                 break;
-        }
-        ;
-    }
-
-    ;
+        };
+    };
 };
 
