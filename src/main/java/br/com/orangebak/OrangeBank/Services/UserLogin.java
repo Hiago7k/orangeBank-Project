@@ -56,9 +56,14 @@ public class UserLogin {
                         usersHistory.add(line);
                     }
                     for (var check : usersHistory) {
-                        if(email.equals(check) && psswd.equals(check))
+                        System.out.println("A lista que ta chegando" + check);
+                        System.out.println("O email que ta chegando" + email);
+                        System.out.println("A senha que ta chegando " + psswd);
+                        if(check.equals(email) && check.equals(psswd))
                         {
+                            System.out.println("************************");
                             System.out.println("Access Allowed");
+                            System.out.println("************************");
                         }else {
                             System.out.println("Access Denied");
                             break;
