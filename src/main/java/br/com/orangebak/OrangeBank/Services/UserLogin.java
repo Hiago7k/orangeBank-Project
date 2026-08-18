@@ -53,7 +53,14 @@ public class UserLogin {
                         if (line == null) {
                             break;
                         }
-                        usersHistory.add(line);
+                        //usersHistory.add(line); esta salvando a primeira linha apenas
+                        if(email.equals(line) && psswd.equals(line)) {
+                            System.out.println("testew @#@#@#@#@#@#@#@");
+                            Users newUsers = new Users(email, psswd);
+                            listUsers.add(newUsers);
+                            System.out.println(newUsers.toString());
+                        }
+                        System.out.println(line); // como eu vou salvando cada linha?
                     }
 
                     for (var check : usersHistory) {
