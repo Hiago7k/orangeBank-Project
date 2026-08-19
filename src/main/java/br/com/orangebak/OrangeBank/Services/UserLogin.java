@@ -41,11 +41,6 @@ public class UserLogin {
                 psswd = keyboard.next();
 
                 try {
-                    for(var check : listUsers){
-                        System.out.println("Exibindo usuarios ja cadastrados");
-                        System.out.println(check);
-                    };
-
                     FileReader reader = new FileReader("users.jsonl");
                     BufferedReader buffer = new BufferedReader(reader);
                     while (true) {
@@ -54,39 +49,25 @@ public class UserLogin {
                             break;
                         }
 
-                        if(line.contains(email) || line.contains(psswd)) { // Apenas valida a senha
-                            System.out.println("*****************");
-                            Users newUsers = new Users(email, psswd);
-                            listUsers.add(newUsers);
-                            System.out.println(newUsers.toString());
-                        }
-                    }
-
-                    for (var check : usersHistory) {
-                        System.out.println("A lista que ta chegando" + check);
-                        System.out.println("O email que ta chegando" + email);
-                        System.out.println("A senha que ta chegando " + psswd);
-                        if(check.equals(email) && check.equals(psswd))
-                        {
-                            System.out.println("************************");
-                            System.out.println("Access Allowed");
-                            System.out.println("************************");
-                        }else {
-                            System.out.println("Access Denied");
+                        System.out.println(email);
+                        System.out.println(psswd);
+                        if (line.contains(email) || line.contains(psswd)) {
+                            System.out.println("*****************************************");
+                            System.out.println("Success Login has realized with success");
+                            System.out.println("*****************************************");
+                        } else {
+                            System.out.println("===============================");
+                            System.out.println("Failed credentials dont exists");
+                            System.out.println("===============================");
                             break;
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println("Error" + e);
-                    System.out.println("caiu no catch");
+                    throw new RuntimeException(e);
                 }
-
-                System.out.println("Caiu fora do try e catch");
                 break;
 
-
             case 2:
-
                 System.out.println("Fill in the fields below.");
                 System.out.println("email: ");
                 email = keyboard.next();
