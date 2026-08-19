@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class UserLogin {
 
     private String email;
-    private String psswd;
+    private String password;
     private Scanner keyboard = new Scanner(System.in);
 
     private List<Users> listUsers = new ArrayList<>();
@@ -38,7 +38,8 @@ public class UserLogin {
                 System.out.println("Your Email: ");
                 email = keyboard.next();
                 System.out.println("Your Password");
-                psswd = keyboard.next();
+                password = keyboard.next();
+
 
                 try {
                     FileReader reader = new FileReader("users.jsonl");
@@ -49,19 +50,20 @@ public class UserLogin {
                             break;
                         }
 
-                        System.out.println(email);
-                        System.out.println(psswd);
-                        if (line.contains(email) || line.contains(psswd)) {
-                            System.out.println("*****************************************");
-                            System.out.println("Success Login has realized with success");
-                            System.out.println("*****************************************");
-                        } else {
-                            System.out.println("===============================");
-                            System.out.println("Failed credentials dont exists");
-                            System.out.println("===============================");
+                        System.out.println(line);
+                        if(line.contains(email))
+                        {
+                            System.out.println("Email founding, looking for your password");
+                            if(line.contains(password)){
+                                System.out.println("SUCCESSSSS PASSWORD");
+                            }
                             break;
+                        } else {
+                            System.out.println("FAIL");
                         }
+
                     }
+
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -72,10 +74,10 @@ public class UserLogin {
                 System.out.println("email: ");
                 email = keyboard.next();
                 System.out.println("password: ");
-                psswd = keyboard.next();
-                Users myUsers = new Users(email, psswd);
+                password = keyboard.next();
+                Users myUsers = new Users(email, password);
 
-                if (psswd.length() <= 3) {
+                if (password.length() <= 3) {
                     System.out.println("Your password is weak, min character is 4");
                     break;
                 }
