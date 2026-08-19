@@ -40,12 +40,13 @@ public class UserLogin {
                 System.out.println("Your Password");
                 password = keyboard.next();
 
-               String json = "users.jsonl";
+               String json = "C:\\Projetos\\OrangeBank\\OrangeBank\\users.jsonl";
+
                Users users = new Users(email,password);
                Gson gson = new Gson();
                Users meuUsers = gson.fromJson(json, Users.class);
                System.out.println(meuUsers.toString());
-
+                System.out.println("@#@#@#@#@#@#@#");
 
                 try {
                     FileReader reader = new FileReader("users.jsonl");
@@ -83,7 +84,7 @@ public class UserLogin {
                     break;
                 }
 
-                Gson gson = new GsonBuilder()
+                 gson = new GsonBuilder()
                         .setPrettyPrinting()
                         .create();
                 String nameOfFile = "users.jsonl";
