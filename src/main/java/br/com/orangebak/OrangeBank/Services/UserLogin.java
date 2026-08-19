@@ -50,18 +50,13 @@ public class UserLogin {
                             break;
                         }
 
-                        System.out.println(line);
-                        if(line.contains(email))
+                        if(line.contains(email) || line.contains(password))
                         {
-                            System.out.println("Email founding, looking for your password");
-                            if(line.contains(password)){
-                                System.out.println("SUCCESSSSS PASSWORD");
-                            }
+                            System.out.println("SUCCESS ACCESS REALIZED");
                             break;
                         } else {
                             System.out.println("FAIL");
                         }
-
                     }
 
                 } catch (Exception e) {
