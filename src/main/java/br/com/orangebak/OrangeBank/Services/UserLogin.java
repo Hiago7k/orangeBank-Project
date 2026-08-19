@@ -40,6 +40,12 @@ public class UserLogin {
                 System.out.println("Your Password");
                 password = keyboard.next();
 
+               String json = "users.jsonl";
+               Users users = new Users(email,password);
+               Gson gson = new Gson();
+               Users meuUsers = gson.fromJson(json, Users.class);
+               System.out.println(meuUsers.toString());
+
 
                 try {
                     FileReader reader = new FileReader("users.jsonl");
